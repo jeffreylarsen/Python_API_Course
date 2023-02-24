@@ -17,7 +17,7 @@ def get_my_posts(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    posts = db.query(models.Post).filter(models.Post.user_id == current_user.id).all()
+    posts = db.query(models.Post).filter(models.Poowner == current_user.id).all()
 
     return posts
 
@@ -36,7 +36,7 @@ def get_all_posts(
     #         .query(models.Post) \
     #         .filter(
     #             # (models.Post.published == True and
-    #             # models.Post.user_id == current_user.id) or
+    #             # models.Poowner == current_user.id) or
     #             models.Post.title.contains(search)
     #         ) \
     #         .limit(limit) \
@@ -53,7 +53,7 @@ def get_all_posts(
             .group_by(models.Post.id) \
             .filter(
                 # (models.Post.published == True and
-                # models.Post.user_id == current_user.id) or
+                # models.Poowner == current_user.id) or
                 models.Post.title.contains(search)
             ) \
             .limit(limit) \
@@ -70,7 +70,7 @@ def create_post(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    new_post = models.Post(user_id=current_user.id, **post.dict())
+    new_post = models.Post(owner_id=current_user.id, **post.dict())
     db.add(new_post)
     db.commit()
     db.refresh(new_post)
@@ -122,7 +122,7 @@ def delete_post(
             detail=f"Post with id: {id} was not found."
         )
     
-    if post.user_id != current_user.id:
+    if post.owner_id != current_user.id:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You are not allowed to delete another users' post."
@@ -149,7 +149,7 @@ def update_post(
             detail=f"Post with id: {id} was not found."
         )
     
-    if post.user_id != current_user.id:
+    if post.owner_id != current_user.id:
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="You are not allowed to update another users' post."

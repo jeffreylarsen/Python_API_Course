@@ -21,7 +21,7 @@ class UserRepsonse(BaseModel):
 class PostModel(PostBase):
     id: int
     created: datetime
-    user_id: int
+    owner_id: int
     owner: UserRepsonse
 
     class Config:
