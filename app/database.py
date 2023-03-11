@@ -15,6 +15,7 @@ def get_db():
     db = SessionLocal()
     try:
         yield db
+        print('connection to db was successful!!')
     finally:
         db.close()
 
