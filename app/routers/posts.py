@@ -17,7 +17,7 @@ def get_my_posts(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    posts = db.query(models.Post).filter(models.Poowner == current_user.id).all()
+    posts = db.query(models.Post).filter(models.owner == current_user.id).all()
 
     return posts
 
@@ -26,7 +26,7 @@ def get_my_posts(
 
 def get_all_posts(
         db: Session = Depends(get_db),
-        current_user: int = Depends(Oauth2.get_current_user),
+        # current_user: int = Depends(Oauth2.get_current_user),
         limit: int = 50,
         offset: int = 0,
         search: Optional[str] = ""
@@ -36,7 +36,7 @@ def get_all_posts(
     #         .query(models.Post) \
     #         .filter(
     #             # (models.Post.published == True and
-    #             # models.Poowner == current_user.id) or
+    #             # models.owner == current_user.id) or
     #             models.Post.title.contains(search)
     #         ) \
     #         .limit(limit) \
@@ -53,7 +53,7 @@ def get_all_posts(
             .group_by(models.Post.id) \
             .filter(
                 # (models.Post.published == True and
-                # models.Poowner == current_user.id) or
+                # models.owner == current_user.id) or
                 models.Post.title.contains(search)
             ) \
             .limit(limit) \
