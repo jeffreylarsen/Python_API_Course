@@ -44,10 +44,10 @@ def get_all_posts(
     #         .all()
     
     posts = db \
-            .query(models.Post, func.count(models.Votes.post_id).label("votes")) \
+            .query(models.Post, func.count(models.Vote.post_id).label("votes")) \
             .join(
-                models.Votes, 
-                models.Votes.post_id == models.Post.id,
+                models.Vote, 
+                models.Vote.post_id == models.Post.id,
                 isouter=True
             ) \
             .group_by(models.Post.id) \
@@ -87,10 +87,10 @@ def get_post(
     post = db.query(models.Post).filter(models.Post.id == id).first()
 
     post = db \
-            .query(models.Post, func.count(models.Votes.post_id).label("votes")) \
+            .query(models.Post, func.count(models.Vote.post_id).label("votes")) \
             .join(
-                models.Votes, 
-                models.Votes.post_id == models.Post.id,
+                models.Vote, 
+                models.Vote.post_id == models.Post.id,
                 isouter=True
             ) \
             .group_by(models.Post.id) \
