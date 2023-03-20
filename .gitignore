@@ -6,3 +6,4 @@ example_sql.sql
 /condavenv
 /pythonvenv
 /venv
+*.DS_Store
