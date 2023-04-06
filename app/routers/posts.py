@@ -23,7 +23,6 @@ def get_my_posts(
 
 # @router.get('/all', response_model=List[schemas.PostResponse])
 @router.get('/all', response_model=List[schemas.PostVotesModel])
-
 def get_all_posts(
         db: Session = Depends(get_db),
         # current_user: int = Depends(Oauth2.get_current_user),

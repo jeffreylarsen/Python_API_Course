@@ -22,7 +22,9 @@ class User(Base):
     email = Column(String, nullable=False, unique=True)
     password = Column(String, nullable=False)
     created = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('Now()'))
-
+    # username = Column(String, nullable=False, unique=True)
+    # member = Column(Boolean, nullable=False)
+    
 class Vote(Base):
     __tablename__ = "votes"
 

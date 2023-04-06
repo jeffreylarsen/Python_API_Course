@@ -5,8 +5,8 @@ from typing import List
 from ..database import get_db
 
 router = APIRouter(
-     prefix="/votes",
-     tags=["Votes"]
+    prefix="/votes",
+    tags=["Votes"]
 )
 
 @router.post('/', status_code=status.HTTP_201_CREATED)

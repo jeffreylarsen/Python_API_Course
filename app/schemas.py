@@ -13,6 +13,7 @@ class PostCreate(PostBase):
 class UserRepsonse(BaseModel):
     id: int
     email: str
+    # member: bool
     created: datetime
 
     class Config:
