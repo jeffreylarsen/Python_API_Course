@@ -131,7 +131,6 @@ def delete_post(
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
-
 @router.put('/{id}', response_model=schemas.PostModel)
 def update_post(
         id: int,
