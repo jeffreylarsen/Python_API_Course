@@ -22,7 +22,7 @@ html = """
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <style>
         :root {
-    --pink: hsl(338, 70\%.55\%);
+    --pink: hsl(338, 70%, 55%);
     --teal: hsl(183, 70%, 62%);
     --white: hsl(334. 7%, 95%);
 }
