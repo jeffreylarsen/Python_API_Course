@@ -7,7 +7,7 @@ from typing import List, Optional
 from ..database import get_db
 
 router = APIRouter(
-    prefix="/3DEffect"
+    prefix="/3DEffect",
     tags=["3DEffect"]
 )
 
