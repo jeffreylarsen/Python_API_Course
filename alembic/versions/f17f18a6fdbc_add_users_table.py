@@ -48,7 +48,7 @@ def upgrade() -> None:
         ),
         sa.Column(
             'member',
-            sa.Boolean(),
+            sa.Integer(),
             nullable=False,
             server_default=int(0)
         ),
