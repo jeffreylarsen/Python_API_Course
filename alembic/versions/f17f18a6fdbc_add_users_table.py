@@ -26,6 +26,11 @@ def upgrade() -> None:
             nullable=False
         ),
         sa.Column(
+            'username',
+            sa.String(),
+            nullable=False
+        ),
+        sa.Column(
             'email',
             sa.String(),
             nullable=False
@@ -42,7 +47,8 @@ def upgrade() -> None:
             nullable=False
         ),
         sa.PrimaryKeyConstraint('id'),
-        sa.UniqueConstraint('email')
+        sa.UniqueConstraint('email'),
+        sa.UniqueConstraint('username')
     )
     pass
 

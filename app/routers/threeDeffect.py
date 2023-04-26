@@ -22,103 +22,103 @@ html = """
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <style>
         :root {
-    --pink: hsl(338, 70%, 55%);
-    --teal: hsl(183, 70%, 62%);
-    --white: hsl(334. 7%, 95%);
-}
+            --pink: hsl(338, 70%, 55%);
+            --teal: hsl(183, 70%, 62%);
+            --white: hsl(334. 7%, 95%);
+        }
 
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-body {
-    background: hsl(224, 32%, 12%);
-    background-image: conic-gradient(
-        from 0deg at 50\% 50\%,
-        blue,
-        purple,
-        purple,
-        blue
-    );
-    background-blend-mode: multiply;
-    color: white;
-    min-block-size: 100vh;
-    display: grid;
-    place-items: center;
-}
+        body {
+            background: hsl(224, 32%, 12%);
+            background-image: conic-gradient(
+                from 0deg at 50% 50%,
+                blue,
+                purple,
+                purple,
+                blue
+            );
+            background-blend-mode: multiply;
+            color: white;
+            min-block-size: 100vh;
+            display: grid;
+            place-items: center;
+        }
 
 
-pre {
+        pre {
 
-    --selector: var(--pink);
-    --property: var(--teal);
-    --punctuation: var(--white);
+            --selector: var(--pink);
+            --property: var(--teal);
+            --punctuation: var(--white);
 
-    font-size: 1.5rem;
-    font-weight: bold;
-    background: hsl(222, 45%, 7%);
-    padding: 2rem;
-    border-radius: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: hsl(222, 45%, 7%);
+            padding: 2rem;
+            border-radius: 1rem;
 
-    position: relative;
+            position: relative;
 
-    transform-style: preserve-3d;
-    transform: 
-        perspective(5000px)
-        rotateX(var(--rotateY))
-        rotatey(var(--rotateX))
-        ;
+            transform-style: preserve-3d;
+            transform: 
+                perspective(5000px)
+                rotateX(var(--rotateY))
+                rotatey(var(--rotateX))
+                ;
 
-}
+        }
 
-.selector {
-    color: var(--selector);
-}
+        .selector {
+            color: var(--selector);
+        }
 
-.property {
-    color: var(--property);
-}
+        .property {
+            color: var(--property);
+        }
 
-.punctuation {
-    color: var(--punctuation);
-}
+        .punctuation {
+            color: var(--punctuation);
+        }
 
-.property + .punctuation {
-    color: var(--property);
-}
+        .property + .punctuation {
+            color: var(--property);
+        }
 
-pre > * {
-    text-shadow: 0 0 0.3rem currentColor;
-}
+        pre > * {
+            text-shadow: 0 0 0.3rem currentColor;
+        }
 
-pre::before,
-pre::after {
-    content: "";
-    position: absolute;
-    border-radius: inherit;
-}
+        pre::before,
+        pre::after {
+            content: "";
+            position: absolute;
+            border-radius: inherit;
+        }
 
-pre::before {
-    inset: 0.75rem;
-    background: blue;
-    transform: translateZ(-49px);
-    /* glow */
-    background: blue;
-    filter: blur(50px);
-    opacity: 0.6;
-    /* shadow */
-    /* background: black;
-    filter: blur(15px);
-    opacity: 0.7; */
-}
+        pre::before {
+            inset: 0.75rem;
+            background: blue;
+            transform: translateZ(-49px);
+            /* glow */
+            background: blue;
+            filter: blur(50px);
+            opacity: 0.6;
+            /* shadow */
+            background: black;
+            filter: blur(15px);
+            opacity: 0.7;
+        }
 
-pre::after {
-    inset: -1rem;
-    background: linear-gradient(-45deg, red, blue);
-    transform: translateZ(-50px);
-}
+        pre::after {
+            inset: -1rem;
+            background: linear-gradient(-45deg, red, blue);
+            transform: translateZ(-50px);
+        }
     </style>
 </head>
 <body>
