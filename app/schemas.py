@@ -42,6 +42,7 @@ class UserCreate(BaseModel):
     username: str
     email: EmailStr
     password: str
+    member: int
 
 class UserLogin(BaseModel):
     email: EmailStr
