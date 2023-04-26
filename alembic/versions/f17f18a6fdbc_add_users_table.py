@@ -46,6 +46,12 @@ def upgrade() -> None:
             server_default=sa.text('Now()'),
             nullable=False
         ),
+        sa.Column(
+            'member',
+            sa.Boolean(),
+            nullable=False,
+            server_default=False
+        ),
         sa.PrimaryKeyConstraint('id'),
         sa.UniqueConstraint('email'),
         sa.UniqueConstraint('username')
