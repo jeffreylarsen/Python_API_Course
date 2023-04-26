@@ -12,7 +12,7 @@ router = APIRouter(
 @router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.UserRepsonse)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 
-    user_query = db.query(models.User).filter(models.User.email == user.email)
+    user_query = db.query(models.User).filter(models.User.email == user.email, models.User.username == user.username)
     existing_user = user_query.first()
 
     if existing_user == None:
