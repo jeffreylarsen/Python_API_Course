@@ -12,8 +12,9 @@ class PostCreate(PostBase):
 
 class UserRepsonse(BaseModel):
     id: int
+    username: str
     email: str
-    # member: bool
+    member: bool
     created: datetime
 
     class Config:
