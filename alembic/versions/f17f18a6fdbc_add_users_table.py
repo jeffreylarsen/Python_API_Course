@@ -48,8 +48,9 @@ def upgrade() -> None:
         ),
         sa.Column(
             'member',
-            sa.Integer(),
-            nullable=False
+            sa.Boolean(),
+            nullable=False,
+            server_default="TRUE"
         ),
         sa.PrimaryKeyConstraint('id'),
         sa.UniqueConstraint('email'),

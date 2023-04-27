@@ -14,7 +14,7 @@ class UserRepsonse(BaseModel):
     id: int
     username: str
     email: str
-    member: int
+    member: bool
     created: datetime
 
     class Config:
@@ -42,7 +42,7 @@ class UserCreate(BaseModel):
     username: str
     email: EmailStr
     password: str
-    member: int
+    member: bool
 
 class UserLogin(BaseModel):
     email: EmailStr
