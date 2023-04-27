@@ -36,6 +36,7 @@ def get_users(db: Session = Depends(get_db)):
 @router.get('/{id}', response_model=schemas.UserRepsonse)
 def get_user(id: int, db: Session = Depends(get_db)):
     user = db.query(models.User).filter(models.User.id == id).first()
+    print(user)
 
     if not user:
         raise HTTPException(
