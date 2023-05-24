@@ -17,7 +17,7 @@ def get_my_posts(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    posts = db.query(models.Post).filter(models.User == current_user.id).all()
+    posts = db.query(models.Post).filter(models.User.id == current_user.id).all()
 
     return posts
 
