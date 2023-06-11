@@ -24,7 +24,7 @@ class User(Base):
     password = Column(String, nullable=False)
     created = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('Now()'))
     username = Column(String, nullable=False, unique=True)
-    member = Column(Boolean, nullable=False, server_default=False)
+    member = Column(Boolean, nullable=False, server_default="FALSE")
     
 class Vote(Base):
     __tablename__ = "votes"
