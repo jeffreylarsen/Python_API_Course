@@ -50,7 +50,7 @@ def upgrade() -> None:
             'member',
             sa.Boolean(),
             nullable=False,
-            server_default="TRUE"
+            server_default=sa.text("TRUE")
         ),
         sa.PrimaryKeyConstraint('id'),
         sa.UniqueConstraint('email'),
