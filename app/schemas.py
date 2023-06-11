@@ -67,23 +67,25 @@ class Vote(BaseModel):
 class Show(BaseModel):
     id: int
     show_name: str
+    show_air_date: datetime
+    show_end_date: datetime
 
     class Config:
         orm_mode = True
 
-# class Story(BaseModel):
-#     id: int
-#     page_number: Optional[str]
-#     slug: str
-#     segment: str
-#     writer: Optional[str]
-#     editor: Optional[str]
-#     source: Optional[str]
-#     mos_objects: Optional[list]
-#     last_modified_by: str
-#     estimated_time: datetime
-#     show_id: int
-#     show: Show
+class Story(BaseModel):
+    id: int
+    page_number: Optional[str]
+    slug: str
+    segment: str
+    writer: Optional[str]
+    editor: Optional[str]
+    source: Optional[str]
+    mos_objects: Optional[list]
+    last_modified_by: str
+    estimated_time: datetime
+    show_id: int
+    show: Show
 
-#     class Config:
-#         orm_mode = True
+    class Config:
+        orm_mode = True
