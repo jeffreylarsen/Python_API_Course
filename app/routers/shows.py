@@ -11,13 +11,13 @@ router = APIRouter(
 )
 
 @router.get('/', response_model=List[schemas.Show])
-def get_my_posts(
-        db: Session = Depends(get_db),
-        current_user: int = Depends(Oauth2.get_current_user)
+def get_all_shows(
+        # db: Session = Depends(get_db),
+        # current_user: int = Depends(Oauth2.get_current_user)
     ):
 
     # posts = db.query(models.Show).all()
     # print(posts)
 
-    return {"detail": "Not implemented yet"}
+    return [{"id": 1, "title": "The Office"}, {"id": 2, "title": "Parks and Rec"}]
 
