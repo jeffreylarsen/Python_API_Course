@@ -67,8 +67,8 @@ class Vote(BaseModel):
 class Show(BaseModel):
     id: int
     show_name: str
-    show_air_date: datetime
-    show_end_date: datetime
+    show_air_date: str
+    show_end_date: str
 
     class Config:
         orm_mode = True
