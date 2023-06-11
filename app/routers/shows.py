@@ -16,8 +16,8 @@ def get_my_posts(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    posts = db.query(models.Show).all()
-    print(posts)
+    # posts = db.query(models.Show).all()
+    # print(posts)
 
-    return posts
+    return {"detail": "Not implemented yet"}
 

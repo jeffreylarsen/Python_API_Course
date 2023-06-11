@@ -64,12 +64,12 @@ class Vote(BaseModel):
     dir: conint(le=1)
 
 
-# class Show(BaseModel):
-#     id: int
-#     show_name: str
+class Show(BaseModel):
+    id: int
+    show_name: str
 
-#     class Config:
-#         orm_mode = True
+    class Config:
+        orm_mode = True
 
 # class Story(BaseModel):
 #     id: int
