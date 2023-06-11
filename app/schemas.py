@@ -62,3 +62,28 @@ class TokenData(BaseModel):
 class Vote(BaseModel):
     post_id: int
     dir: conint(le=1)
+
+
+class Show(BaseModel):
+    id: int
+    show_name: str
+
+    class Config:
+        orm_mode = True
+
+class Story(BaseModel):
+    id: int
+    page_number: Optional[str]
+    slug: str
+    segment: str
+    writer: Optional[str]
+    editor: Optional[str]
+    source: Optional[str]
+    mos_objects: Optional[list]
+    last_modified_by: str
+    estimated_time: datetime
+    show_id: int
+    show: Show
+
+    class Config:
+        orm_mode = True

@@ -1,4 +1,5 @@
 from sqlalchemy import Column, ForeignKey, Integer, String, Boolean
+from sqlalchemy.dialects.postgresql import ARRAY
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 from sqlalchemy.orm import relationship
@@ -23,10 +24,34 @@ class User(Base):
     password = Column(String, nullable=False)
     created = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('Now()'))
     username = Column(String, nullable=False, unique=True)
-    member = Column(Boolean, nullable=False)
+    member = Column(Boolean, nullable=False, server_default=False)
     
 class Vote(Base):
     __tablename__ = "votes"
 
     post_id= Column(Integer, ForeignKey("posts.id", ondelete="CASCADE"), primary_key=True)
     user_id= Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
+
+class Show(Base):
+    __tablename__ = "shows"
+
+    id = Column(Integer, primary_key=True, nullable=False)
+    show_name = Column(String, nullable=False)
+
+class Story(Base):
+    __tablename__ = "stories"
+
+    id = Column(Integer, primary_key=True, nullable=False)
+    page_number= Column(String, nullable=True)
+    slug= Column(String, nullable=False)
+    segment= Column(String, nullable=False)
+    writer= Column(String, nullable=True)
+    editor= Column(String, nullable=True)
+    source= Column(String, nullable=True)
+    mos_objects = Column(ARRAY(String), nullable=True)
+    last_modified_by= Column(String, nullable=False)
+    estimated_time= Column(TIMESTAMP(timezone=True), nullable=False)
+    estimated_time= Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('Now()'))
+    shown_id = Column(Integer, ForeignKey('shows.id'), nullable=False)
+    show = relationship("Show")
+
