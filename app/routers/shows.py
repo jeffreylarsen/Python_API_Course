@@ -19,5 +19,5 @@ def get_all_shows(
     # posts = db.query(models.Show).all()
     # print(posts)
 
-    return [{"id": 1, "title": "The Office"}, {"id": 2, "title": "Parks and Rec"}]
+    return [{"id": 1, "show_name": "The Office"}, {"id": 2, "show_name": "Parks and Rec"}]
 
