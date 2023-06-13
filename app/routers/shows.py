@@ -10,10 +10,10 @@ router = APIRouter(
     tags=["Shows"]
 )
 
-@router.get('/')
+@router.get('/', response_model=List[schemas.PostVotesModel])
 def get_all_shows(
-        db: Session = Depends(get_db)
-        # current_user: int = Depends(Oauth2.get_current_user)
+        db: Session = Depends(get_db),
+        current_user: int = Depends(Oauth2.get_current_user)
     ):
 
     posts = db.query(models.Show).all()
