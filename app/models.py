@@ -55,6 +55,6 @@ class Story(Base):
     mos_objects = Column(ARRAY(String), nullable=True)
     last_modified_by= Column(String, nullable=False)
     estimated_time= Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('Now()'))
-    shown_id = Column(Integer, ForeignKey('shows.id'), nullable=False)
+    show_id = Column(Integer, ForeignKey('shows.id'), nullable=False)
     show = relationship("Show")
 
