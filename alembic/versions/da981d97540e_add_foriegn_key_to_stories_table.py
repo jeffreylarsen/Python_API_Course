@@ -1,8 +1,8 @@
 """add foriegn key to stories table
 
-Revision ID: b5469a85d6c6
-Revises: 1258770f9ce5
-Create Date: 2023-06-12 20:53:40.720512
+Revision ID: da981d97540e
+Revises: 117453caa394
+Create Date: 2023-06-13 16:45:04.089415
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = ''
-down_revision = ''
+revision = 'da981d97540e'
+down_revision = '117453caa394'
 branch_labels = None
 depends_on = None
 

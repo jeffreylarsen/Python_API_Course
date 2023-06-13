@@ -51,11 +51,14 @@ def get_all_shows(
 
 
 
-# @router.get('/{show_id}', response_model=schemas.Show)
-# def get_show_by_id(
-#         show_id: int
-#         db: Session = Depends(get_db),
-#         current_user: int = Depends(Oauth2.get_current_user)
-#     ):
-#     # return a single show with air and end dates from the database
-#     return {"id": 1, "show_name": "The Office", "show_air_time":""}
+@router.get('/{show_id}', response_model=List[schemas.Story])
+def get_show_by_id(
+        show_id: int,
+        db: Session = Depends(get_db),
+        current_user: int = Depends(Oauth2.get_current_user)
+    ):
+
+    show_stories = db.query(models.Story).filter(models.Show.id == show_id).all()
+    print(show_stories)
+    
+    return show_stories

@@ -81,6 +81,7 @@ class Story(BaseModel):
     writer: Optional[str]
     editor: Optional[str]
     source: Optional[str]
+    script: Optional[str]
     mos_objects: Optional[list]
     last_modified_by: Optional[str]
     estimated_time: Optional[datetime]

@@ -52,6 +52,7 @@ class Story(Base):
     writer= Column(String, nullable=True)
     editor= Column(String, nullable=True)
     source= Column(String, nullable=True)
+    script= Column(String, nullable=True)
     mos_objects = Column(ARRAY(String), nullable=True)
     last_modified_by= Column(String, nullable=False)
     estimated_time= Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('Now()'))
