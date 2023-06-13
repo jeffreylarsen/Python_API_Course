@@ -10,7 +10,7 @@ router = APIRouter(
     tags=["Shows"]
 )
 
-@router.get('/', response_model=List[schemas.Show])
+@router.get('/')
 def get_all_shows(
         # db: Session = Depends(get_db),
         # current_user: int = Depends(Oauth2.get_current_user)
