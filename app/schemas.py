@@ -82,9 +82,9 @@ class Story(BaseModel):
     editor: Optional[str]
     source: Optional[str]
     script: Optional[str]
-    mos_objects: Optional[List[str]]
+    mos_objects: Optional[str]
     last_modified_by: Optional[str]
-    estimated_time: Optional[datetime]
+    estimated_time: Optional[str]
     show_id: int
 
     class Config:

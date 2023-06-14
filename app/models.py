@@ -53,9 +53,9 @@ class Story(Base):
     editor= Column(String, nullable=True)
     source= Column(String, nullable=True)
     script= Column(String, nullable=True)
-    mos_objects = Column(ARRAY(String), nullable=True)
+    mos_objects = Column(String, nullable=True)
     last_modified_by= Column(String, nullable=False)
-    estimated_time= Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('Now()'))
+    estimated_time= Column(String, nullable=False, server_default='00:00:00')
     show_id = Column(Integer, ForeignKey('shows.id'), nullable=False)
     show = relationship("Show")
 

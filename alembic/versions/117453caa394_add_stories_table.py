@@ -56,7 +56,7 @@ def upgrade() -> None:
         ),
         sa.Column(
             'mos_objects',
-            sa.JSON(),
+            sa.String(),
             server_default='[]'
         ),
         sa.Column(
@@ -66,7 +66,7 @@ def upgrade() -> None:
         ),
         sa.Column(
             'estimated_time',
-            sa.DateTime(),
+            sa.String(),
             nullable=True
         )
     )
