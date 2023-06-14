@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr, conint
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 
 class PostBase(BaseModel):
     title: str
@@ -82,7 +82,7 @@ class Story(BaseModel):
     editor: Optional[str]
     source: Optional[str]
     script: Optional[str]
-    mos_objects: Optional[list]
+    mos_objects: Optional[List[str]]
     last_modified_by: Optional[str]
     estimated_time: Optional[datetime]
     show_id: int

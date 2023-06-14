@@ -84,8 +84,6 @@ def get_post(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    post = db.query(models.Post).filter(models.Post.id == id).first()
-
     post = db \
             .query(models.Post, func.count(models.Vote.post_id).label("votes")) \
             .join(
