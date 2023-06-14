@@ -16,15 +16,10 @@ def get_all_stories(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    if db:
-        print("Well the database is getting accessed, here look...")
-        print(db)
-    else:
-        print("the database is fucked up")
-
-    print(db.query(models.Story))
-    print(db.query(models.Story).all())
-    stories = db.query(models.Story).all()
+    # print(db.query(models.Story))
+    # print(db.query(models.Story).all())
+    stories = db.execute("SELECT * FROM stories")
+    print(stories)
     
     return stories
 
