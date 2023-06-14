@@ -1,5 +1,5 @@
 from fastapi import Response, status, HTTPException, Depends, APIRouter
-from sqlalchemy import func
+from sqlalchemy import func, text
 from sqlalchemy.orm import Session
 from .. import models, schemas, Oauth2
 from typing import List, Optional
@@ -18,7 +18,7 @@ def get_all_stories(
 
     # print(db.query(models.Story))
     # print(db.query(models.Story).all())
-    stories = db.execute("SELECT * FROM stories")
+    stories = db.execute(text("SELECT * FROM stories"))
     print(stories)
     
     return stories
