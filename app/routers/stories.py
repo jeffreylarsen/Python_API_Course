@@ -18,7 +18,7 @@ def get_all_stories(
 
     # print(db.query(models.Story))
     # print(db.query(models.Story).all())
-    stories = db.execute(text("SELECT * FROM stories"))
+    stories = db.execute(text("SELECT * FROM stories")).all()
     print(stories)
     
     return stories
