@@ -58,7 +58,7 @@ def get_show_by_id(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    show_stories = db.query(models.Story).filter(models.Story.show_id == show_id).all()
+    show_stories = db.query(models.Story).filter_by(models.Story.show_id == show_id)
     print(show_stories)
     
     return show_stories
