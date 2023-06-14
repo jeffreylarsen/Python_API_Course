@@ -67,7 +67,8 @@ def upgrade() -> None:
         sa.Column(
             'estimated_time',
             sa.String(),
-            nullable=True
+            nullable=False,
+            server_default='00:00:00'
         )
     )
     pass

@@ -84,7 +84,7 @@ class Story(BaseModel):
     script: Optional[str]
     mos_objects: Optional[str]
     last_modified_by: Optional[str]
-    estimated_time: Optional[str]
+    estimated_time: str
     show_id: int
 
     class Config:
