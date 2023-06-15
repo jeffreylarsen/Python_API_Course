@@ -24,7 +24,7 @@ def get_all_stories(
 #----------------------------
 
     # # WORKING!!
-    # stories = db.execute(text("SELECT * FROM stories")).all()
+    stories = db.execute(text("SELECT * FROM stories")).all()
     # print(stories)
     
     return stories
