@@ -31,7 +31,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 def get_users(db: Session = Depends(get_db)):
 
     users = db.query(models.User).all()
-    print(users)
+    print(db.query(models.User))
     return users
 
 @router.get('/{id}', response_model=schemas.UserRepsonse)

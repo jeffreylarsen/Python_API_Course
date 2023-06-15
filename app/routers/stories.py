@@ -20,7 +20,7 @@ def get_all_stories(
     #NOT WORKING!!
     # stories = db.query(models.Story).all()
     print("hey look at me, I'm the shitty code that doesn't want to work")
-    print(db.query(models.Story).all())
+    print(db.query(models.Story))
 
 #----------------------------
 
