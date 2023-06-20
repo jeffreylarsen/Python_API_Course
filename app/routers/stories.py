@@ -16,7 +16,6 @@ def get_all_stories(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    # # WORKING!!
     stories = db.execute(text("SELECT * FROM stories")).all()
     # print(stories)
 
@@ -29,17 +28,57 @@ def get_a_story(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-#----------------------------
-
-    # # WORKING!!
     story = db.execute(text(f"SELECT * FROM stories WHERE id = {id}")).first()
     # print(stories)
     
-    if story:
+    if not story:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Story with id: {id} not found."
         )
     
     return story
+
+@router.post('/', response_model=schemas.Story)
+def create_a_story(
+        story: schemas.StoryCreate,
+        db: Session = Depends(get_db),
+        current_user: int = Depends(Oauth2.get_current_user)
+    ):
+
+    new_story = models.Story(created_by=current_user.username, **story.dict())
+    db.add(new_story)
+    db.commit()
+    db.refresh(new_story)
+
+    return new_story
+
+@router.delete('/{id}', response_model=schemas.Story)
+def delete_a_story(
+        id: int,
+        db: Session = Depends(get_db),
+        current_user: int = Depends(Oauth2.get_current_user)
+    ):
+
+    story_query = db.query(models.Story).filter(models.Story.id == id)
+
+    story = story_query.first()
+
+    if story == None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Story with id: {id} was not found."
+        )
+    
+    if story.created_by != current_user.username:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=f"You are not authorized to delete this story."
+        )
+
+    story_query.delete(synchronize_session=False)
+    db.commit()
+
+    return story
+
 
