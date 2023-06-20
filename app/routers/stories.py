@@ -27,13 +27,7 @@ def get_all_stories(
     # # WORKING!!
     stories = db.execute(text("SELECT * FROM stories")).all()
     # print(stories)
-    
-    if not story:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail=f"Story with id: {id} not found."
-        )
-    
+
     return stories
 
 
@@ -43,19 +37,13 @@ def get_all_stories(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-
-    #NOT WORKING!!
-    # stories = db.query(models.Story).all()
-    print("hey look at me, I'm the shitty code that doesn't want to work")
-    print(db.query(models.Story))
-
 #----------------------------
 
     # # WORKING!!
     story = db.execute(text(f"SELECT * FROM stories WHERE id = {id}")).first()
     # print(stories)
     
-    if not story:
+    if story:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Story with id: {id} not found."
