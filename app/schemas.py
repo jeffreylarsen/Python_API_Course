@@ -104,3 +104,6 @@ class StoryCreate(BaseModel):
     script: Optional[str]
     mos_objects: Optional[str]
     show_id: int
+
+    class Config:
+        orm_mode = True
