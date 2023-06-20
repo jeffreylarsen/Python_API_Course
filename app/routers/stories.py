@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from .. import models, schemas, Oauth2
 from typing import List, Optional
 from ..database import get_db
+from ..utils import calculate_reading_time
 
 router = APIRouter(
     prefix="/stories",
@@ -47,7 +48,12 @@ def create_a_story(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    new_story = models.Story(created_by=current_user.username, last_modified_by=current_user.username, **story.dict())
+    new_story = models.Story(
+        created_by=current_user.username,
+        last_modified_by=current_user.username,
+        estimated_time=calculate_reading_time(story.script, 100),
+        **story.dict()
+    )
     print(new_story)
     db.add(new_story)
     db.commit()
