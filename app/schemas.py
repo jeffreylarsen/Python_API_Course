@@ -67,6 +67,8 @@ class Vote(BaseModel):
 class Show(BaseModel):
     id: int
     show_name: str
+    mos_active: bool
+    created_by: str
     show_air_date: datetime
     show_end_date: datetime
 
@@ -84,6 +86,7 @@ class Story(BaseModel):
     script: Optional[str]
     mos_objects: Optional[str]
     last_modified_by: Optional[str]
+    created_by: str
     estimated_time: str
     show_id: int
 

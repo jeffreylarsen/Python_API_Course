@@ -30,6 +30,16 @@ def upgrade() -> None:
             nullable=False
         ),
         sa.Column(
+            'mos_active',
+            sa.Boolean(),
+            nullable=False
+        ),
+        sa.Column(
+            'created_by',
+            sa.String(),
+            nullable=False
+        ),
+        sa.Column(
             'show_air_date',
             sa.TIMESTAMP(timezone=True),
             server_default=sa.func.now() + sa.text("'1 DAY'"),

@@ -28,13 +28,19 @@ def get_show_by_id(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    # show_stories = db.query(models.Story).filter(models.Story.show_id == show_id).all()
-    show_stories = db.execute(text(f"SELECT * FROM stories WHERE show_id = {show_id}")).all()
-    if not show_stories:
+    show = db.query(models.Show).filter(models.Show.id == show_id).first()
+    # show = db.execute(f"SELECT FROM shows WHERE id = {show_id}").first()
+
+    if not show:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
             detail=f"Show with id: {show_id} was not found."
         )
+    
+    show_stories = db.execute(text(f"SELECT * FROM stories WHERE show_id = {show_id}")).all()
+
+
+
     
     # print(show_stories)
     

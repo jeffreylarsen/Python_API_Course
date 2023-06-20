@@ -37,6 +37,8 @@ class Show(Base):
 
     id = Column(Integer, primary_key=True, nullable=False)
     show_name = Column(String, nullable=False)
+    mos_active = Column(Boolean, nullable=False)
+    created_by = Column(String, nullable=False)
     show_air_date = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('NOW(), INTERVAL 1 DAY'))
     show_end_date = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('NOW(), INTERVAL 1 DAY, INTERVAL 1 HOUR'))
 
@@ -54,7 +56,8 @@ class Story(Base):
     source= Column(String, nullable=True)
     script= Column(String, nullable=True)
     mos_objects = Column(String, nullable=True)
-    last_modified_by= Column(String, nullable=True)
+    last_modified_by = Column(String, nullable=True)
+    created_by = Column(String, nullable=False)
     estimated_time= Column(String, nullable=False, server_default='00:00:00')
     show_id = Column(Integer, ForeignKey('shows.id'), nullable=False)
     show = relationship("Show")

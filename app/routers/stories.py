@@ -16,14 +16,6 @@ def get_all_stories(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-
-    #NOT WORKING!!
-    # stories = db.query(models.Story).all()
-    print("hey look at me, I'm the shitty code that doesn't want to work")
-    print(db.query(models.Story))
-
-#----------------------------
-
     # # WORKING!!
     stories = db.execute(text("SELECT * FROM stories")).all()
     # print(stories)
@@ -32,7 +24,7 @@ def get_all_stories(
 
 
 @router.get('/{id}', response_model=List[schemas.Story])
-def get_all_stories(
+def get_a_story(
         db: Session = Depends(get_db),
         current_user: int = Depends(Oauth2.get_current_user)
     ):

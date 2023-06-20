@@ -33,8 +33,26 @@ def upgrade() -> None:
         remote_cols=['id'],
         ondelete='CASCADE'
     )
+    op.create_foreign_key(
+        'story_created_by_fk',
+        source_table='stories',
+        referent_table='users',
+        local_cols=['created_by'],
+        remote_cols=['username'],
+        ondelete='CASCADE'
+    )
     pass
 
 
 def downgrade() -> None:
+
+    op.drop_constraint(
+        'story_created_by_fk',
+        table_name='stories',
+    )
+    op.drop_constraint(
+        'story_show_id_fk',
+        table_name='stories',
+    )
+    op.drop_column('stories', 'show_id')
     pass

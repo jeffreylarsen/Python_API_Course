@@ -65,6 +65,11 @@ def upgrade() -> None:
             nullable=True
         ),
         sa.Column(
+            'created_by',
+            sa.String(),
+            nullable=False
+        ),
+        sa.Column(
             'estimated_time',
             sa.String(),
             nullable=False,
