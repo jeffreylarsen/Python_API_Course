@@ -24,6 +24,7 @@ def get_all_stories(
 
 @router.get('/{id}', response_model=List[schemas.Story])
 def get_a_story(
+        id: int,
         db: Session = Depends(get_db),
         current_user: int = Depends(Oauth2.get_current_user)
     ):
