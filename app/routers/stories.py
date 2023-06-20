@@ -28,7 +28,7 @@ def get_a_story(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    story = db.execute(text(f"SELECT * FROM stories WHERE id = {id}")).first()
+    story = db.execute(f"SELECT * FROM stories WHERE id = {id}").first()
     # print(stories)
     
     if not story:
