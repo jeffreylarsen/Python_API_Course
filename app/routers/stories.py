@@ -47,7 +47,7 @@ def create_a_story(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    new_story = models.Story(created_by=current_user.username, **story.dict())
+    new_story = models.Story(created_by=current_user.username, last_modified_by=current_user.username, **story.dict())
     print(new_story)
     db.add(new_story)
     db.commit()
