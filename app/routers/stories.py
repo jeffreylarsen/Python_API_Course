@@ -40,7 +40,7 @@ def get_a_story(
     
     return story
 
-@router.post('/', response_model=schemas.Story)
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.Story)
 def create_a_story(
         story: schemas.StoryCreate,
         db: Session = Depends(get_db),
@@ -48,6 +48,7 @@ def create_a_story(
     ):
 
     new_story = models.Story(created_by=current_user.username, **story.dict())
+    print(new_story)
     db.add(new_story)
     db.commit()
     db.refresh(new_story)
