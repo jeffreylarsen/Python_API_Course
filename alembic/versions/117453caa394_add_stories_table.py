@@ -30,6 +30,11 @@ def upgrade() -> None:
             nullable=True
         ),
         sa.Column(
+            "slug",
+            sa.String(),
+            nullable=True
+        ),
+        sa.Column(
             'segment',
             sa.String(),
             nullable=True
