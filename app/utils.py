@@ -20,8 +20,8 @@ def calculate_reading_time(sentence, words_per_minute):
     return f"{hours:02d}:{minutes:02d}:{seconds:02d}"
 
 # Example usage
-sentence = "This is a sample sentence that we want to calculate the reading time for."
-words_per_minute = 200  # Adjust this value according to the expected reading speed
+# sentence = "This is a sample sentence that we want to calculate the reading time for."
+# words_per_minute = 200  # Adjust this value according to the expected reading speed
 
-reading_time = calculate_reading_time(sentence, words_per_minute)
-print("Reading Time:", reading_time)
+# reading_time = calculate_reading_time(sentence, words_per_minute)
+# print("Reading Time:", reading_time)
