@@ -47,7 +47,7 @@ class Show(Base):
 class Story(Base):
     __tablename__ = "stories"
 
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     page_number= Column(String, nullable=True)
     slug= Column(String, nullable=True)
     segment= Column(String, nullable=True)
