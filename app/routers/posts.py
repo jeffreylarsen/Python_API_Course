@@ -70,7 +70,7 @@ def create_post(
     ):
 
     new_post = models.Post(owner_id=current_user.id, **post.dict())
-    print(new_post)
+    print(models.Post(owner_id=current_user.id, **post.dict()))
     db.add(new_post)
     db.commit()
     db.refresh(new_post)
