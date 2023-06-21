@@ -21,7 +21,7 @@ def get_all_shows(
     
     return posts
 
-@router.get('/{show_id}', response_model=List[schemas.Story])
+@router.get('/{show_id}', response_model=List[schemas.StoryModel])
 def get_show_by_id(
         show_id: int,
         db: Session = Depends(get_db),
