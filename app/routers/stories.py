@@ -41,7 +41,7 @@ def get_a_story(
     
     return story
 
-@router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.Story)
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.StoryModel)
 def create_a_story(
         story: schemas.StoryCreate,
         db: Session = Depends(get_db),
@@ -61,7 +61,7 @@ def create_a_story(
 
     return new_story
 
-@router.delete('/{id}', response_model=schemas.Story)
+@router.delete('/{id}', response_model=schemas.StoryModel)
 def delete_a_story(
         id: int,
         db: Session = Depends(get_db),
