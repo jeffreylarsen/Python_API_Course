@@ -11,7 +11,7 @@ router = APIRouter(
     tags=["Stories"]
 )
 
-@router.get('/', response_model=List[schemas.Story])
+@router.get('/', response_model=List[schemas.StoryModel])
 def get_all_stories(
         db: Session = Depends(get_db),
         current_user: int = Depends(Oauth2.get_current_user)
@@ -23,7 +23,7 @@ def get_all_stories(
     return stories
 
 
-@router.get('/{id}', response_model=List[schemas.Story])
+@router.get('/{id}', response_model=List[schemas.StoryModel])
 def get_a_story(
         id: int,
         db: Session = Depends(get_db),

@@ -75,8 +75,8 @@ class Show(BaseModel):
     class Config:
         orm_mode = True
 
-class Story(BaseModel):
-    id: int
+
+class StoryBase(BaseModel):
     page_number: Optional[str]
     slug: Optional[str]
     segment: Optional[str]
@@ -85,25 +85,57 @@ class Story(BaseModel):
     source: Optional[str]
     script: Optional[str]
     mos_objects: Optional[str]
-    last_modified_by: Optional[str]
+
+class StoryModel(StoryBase):
+    id: int
     created_by: str
+    last_modified_by: str
     estimated_time: str
     show_id: int
 
     class Config:
         orm_mode = True
 
+class StoryCreate(StoryBase):
+    pass
 
-class StoryCreate(BaseModel):
-    page_number: Optional[str]
-    slug: Optional[str]
-    segment: Optional[str]
-    writer: Optional[str]
-    editor: Optional[str]
-    source: Optional[str]
-    script: Optional[str]
-    mos_objects: Optional[str]
-    show_id: int
 
-    class Config:
-        orm_mode = True
+
+
+
+
+
+
+
+# class Story(BaseModel):
+#     id: int
+#     page_number: Optional[str]
+#     slug: Optional[str]
+#     segment: Optional[str]
+#     writer: Optional[str]
+#     editor: Optional[str]
+#     source: Optional[str]
+#     script: Optional[str]
+#     mos_objects: Optional[str]
+#     last_modified_by: Optional[str]
+#     created_by: str
+#     estimated_time: str
+#     show_id: int
+
+#     class Config:
+#         orm_mode = True
+
+
+# class StoryCreate(BaseModel):
+#     page_number: Optional[str]
+#     slug: Optional[str]
+#     segment: Optional[str]
+#     writer: Optional[str]
+#     editor: Optional[str]
+#     source: Optional[str]
+#     script: Optional[str]
+#     mos_objects: Optional[str]
+#     show_id: int
+
+#     class Config:
+#         orm_mode = True
