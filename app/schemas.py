@@ -96,7 +96,7 @@ class StoryModel(StoryBase):
     class Config:
         orm_mode = True
 
-class StoryCreate(StoryModel):
+class StoryCreate(StoryBase):
     pass
 
 
