@@ -61,7 +61,7 @@ def create_a_story(
 
     return new_story
 
-@router.delete('/{id}', response_model=schemas.StoryModel)
+@router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
 def delete_a_story(
         id: int,
         db: Session = Depends(get_db),
