@@ -49,9 +49,9 @@ def create_a_story(
     ):
 
     new_story = models.Story(
-        created_by=current_user.username,
-        last_modified_by=current_user.username,
-        estimated_time=calculate_reading_time(story.script, 100),
+        # created_by=current_user.username,
+        # last_modified_by=current_user.username,
+        # estimated_time=calculate_reading_time(story.script, 100),
         **story.dict()
     )
     print(new_story)
