@@ -41,7 +41,7 @@ def get_show_by_id(
 
     return show_stories
 
-@router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.Show)
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.ShowModel)
 def create_a_show(
         show: schemas.ShowCreate,
         db: Session = Depends(get_db),
