@@ -67,7 +67,7 @@ def create_a_story(
         created_by=current_user.username,
         last_modified_by=current_user.username,
         estimated_time=calculate_reading_time(story.script, 100),
-        show_id=story.show_id
+        show_id=1
     )
 
     # print(story.dict())
