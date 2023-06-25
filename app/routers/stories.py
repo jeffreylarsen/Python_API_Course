@@ -41,9 +41,10 @@ def get_a_story(
     
     return story
 
-@router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.StoryModel)
+@router.post('/{show_id}', status_code=status.HTTP_201_CREATED, response_model=schemas.StoryModel)
 def create_a_story(
         story: schemas.StoryCreate,
+        show_id: int,
         db: Session = Depends(get_db),
         current_user: int = Depends(Oauth2.get_current_user)
     ):
@@ -67,7 +68,7 @@ def create_a_story(
         created_by=current_user.username,
         last_modified_by=current_user.username,
         estimated_time=calculate_reading_time(story.script, 100),
-        show_id=1
+        show_id=show_id,
     )
 
     # print(story.dict())
