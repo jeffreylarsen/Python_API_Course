@@ -39,10 +39,28 @@ def get_show_by_id(
     
     show_stories = db.execute(text(f"SELECT * FROM stories WHERE show_id = {show_id}")).all()
 
+    return show_stories
 
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=schemas.Show)
+def create_a_show(
+        show: schemas.ShowCreate,
+        db: Session = Depends(get_db),
+        current_user: int = Depends(Oauth2.get_current_user)
+    ):
+
+    new_show = models.Show(
+        created_by=current_user.username,
+        **show.dict()
+    )
+
+    db.add(new_show)
+    db.commit()
+    db.refresh(new_show)
+
+    return new_show
 
     
     # print(show_stories)
     
-    return show_stories
+    
 

@@ -55,24 +55,6 @@ def create_a_story(
         **story.dict()
     )
 
-    # show_id=story.show_id
-
-    # new_story = models.Story(
-    #     page_number=story.page_number,
-    #     slug=story.slug,
-    #     segment=story.segment,
-    #     writer=story.writer,
-    #     editor=story.editor,
-    #     source=story.source,
-    #     script=story.script,
-    #     mos_objects=story.mos_objects,
-    #     created_by=current_user.username,
-    #     last_modified_by=current_user.username,
-    #     estimated_time=calculate_reading_time(story.script, 100),
-    #     show_id=show_id,
-    # )
-
-    # print(story.dict())
     db.add(new_story)
     db.commit()
     db.refresh(new_story)
@@ -107,4 +89,37 @@ def delete_a_story(
 
     return story
 
+@router.put('/{id}', status_code=status.HTTP_202_ACCEPTED, response_model=schemas.StoryModel)
+def update_a_story(
+        id: int,
+        story: schemas.StoryCreate,
+        db: Session = Depends(get_db),
+        current_user: int = Depends(Oauth2.get_current_user)
+    ):
+
+    story_query = db.query(models.Story).filter(models.Story.id == id)
+
+    story_to_update = story_query.first()
+
+    if story_to_update == None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Story with id: {id} was not found."
+        )
+    
+    if story_to_update.created_by != current_user.username:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail=f"You are not authorized to update this story."
+        )
+
+    story_to_update.last_modified_by = current_user.username
+    story_to_update.title = story.title
+    story_to_update.script = story.script
+    story_to_update.estimated_time = calculate_reading_time(story.script, 100)
+
+    db.commit()
+    db.refresh(story_to_update)
+
+    return story_to_update
 

@@ -64,16 +64,33 @@ class Vote(BaseModel):
     dir: conint(le=1)
 
 
-class Show(BaseModel):
-    id: int
+# class Show(BaseModel):
+#     id: int
+#     show_name: str
+#     mos_active: bool
+#     created_by: str
+#     show_air_date: datetime
+#     show_end_date: datetime
+
+#     class Config:
+#         orm_mode = True
+
+
+class ShowBase(BaseModel):
     show_name: str
     mos_active: bool
-    created_by: str
     show_air_date: datetime
     show_end_date: datetime
 
+class ShowModel(ShowBase):
+    id: int
+    created_by: str
+
     class Config:
         orm_mode = True
+
+class ShowCreate(ShowBase):
+    pass
 
 
 class StoryBase(BaseModel):
