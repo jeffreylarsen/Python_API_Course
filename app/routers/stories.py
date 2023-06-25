@@ -54,7 +54,7 @@ def create_a_story(
         estimated_time=calculate_reading_time(story.script, 100),
         **story.dict()
     )
-    print(**story.dict())
+    print(story.dict())
     db.add(new_story)
     db.commit()
     db.refresh(new_story)
