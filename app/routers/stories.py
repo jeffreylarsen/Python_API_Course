@@ -48,29 +48,29 @@ def create_a_story(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    # new_story = models.Story(
-    #     created_by=current_user.username,
-    #     last_modified_by=current_user.username,
-    #     estimated_time=calculate_reading_time(story.script, 100),
-    #     **story.dict()
-    # )
-
-    show_id=story.show_id
-
     new_story = models.Story(
-        page_number=story.page_number,
-        slug=story.slug,
-        segment=story.segment,
-        writer=story.writer,
-        editor=story.editor,
-        source=story.source,
-        script=story.script,
-        mos_objects=story.mos_objects,
         created_by=current_user.username,
         last_modified_by=current_user.username,
         estimated_time=calculate_reading_time(story.script, 100),
-        show_id=show_id,
+        **story.dict()
     )
+
+    # show_id=story.show_id
+
+    # new_story = models.Story(
+    #     page_number=story.page_number,
+    #     slug=story.slug,
+    #     segment=story.segment,
+    #     writer=story.writer,
+    #     editor=story.editor,
+    #     source=story.source,
+    #     script=story.script,
+    #     mos_objects=story.mos_objects,
+    #     created_by=current_user.username,
+    #     last_modified_by=current_user.username,
+    #     estimated_time=calculate_reading_time(story.script, 100),
+    #     show_id=show_id,
+    # )
 
     # print(story.dict())
     db.add(new_story)
