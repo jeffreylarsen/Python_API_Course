@@ -10,7 +10,7 @@ router = APIRouter(
     tags=["Shows"]
 )
 
-@router.get('/', response_model=List[schemas.Show])
+@router.get('/', response_model=List[schemas.ShowModel])
 def get_all_shows(
         db: Session = Depends(get_db),
         current_user: int = Depends(Oauth2.get_current_user)
@@ -62,5 +62,47 @@ def create_a_show(
     
     # print(show_stories)
     
-    
+@router.put('/{show_id}', status_code=status.HTTP_202_ACCEPTED, response_model=schemas.ShowModel)
+def update_a_show(
+        show_id: int,
+        show: schemas.ShowCreate,
+        db: Session = Depends(get_db),
+        current_user: int = Depends(Oauth2.get_current_user)
+    ):
 
+    show_to_update = db.query(models.Show).filter(models.Show.id == show_id).first()
+
+    if not show_to_update:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Show with id: {show_id} was not found."
+        )
+
+    show_to_update.last_modified_by = current_user.username
+    show_to_update.title = show.show_name
+
+    db.commit()
+    db.refresh(show_to_update)
+
+    return show_to_update
+
+
+@router.delete('/{show_id}', status_code=status.HTTP_204_NO_CONTENT)
+def delete_a_show(
+        show_id: int,
+        db: Session = Depends(get_db),
+        current_user: int = Depends(Oauth2.get_current_user)
+    ):
+
+    show_to_delete = db.query(models.Show).filter(models.Show.id == show_id).first()
+
+    if not show_to_delete:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail=f"Show with id: {show_id} was not found."
+        )
+
+    db.delete(show_to_delete)
+    db.commit()
+
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
