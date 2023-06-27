@@ -42,13 +42,13 @@ app.include_router(threeDeffect.router)
 def root():
     return {"hello":"Hello, Internet!!"}
 
-# templates = Jinja2Templates(directory="../Portfolio_Website")
-app.mount("/Portfolio_Website", StaticFiles(directory="../Portfolio_Website"), name="Portfolio_Website")
+# # templates = Jinja2Templates(directory="../Portfolio_Website")
+# app.mount("/Portfolio_Website", StaticFiles(directory="../Portfolio_Website"), name="Portfolio_Website")
 
-@app.get("/hello")
-async def read_index():
-    # with open("Portfolio_Website/index.html") as f:
-    #     html_content = f.read()
+# @app.get("/hello")
+# async def read_index():
+#     # with open("Portfolio_Website/index.html") as f:
+#     #     html_content = f.read()
     
-    return FileResponse("Portfolio_Website/index.html")
-    # return HTMLResponse(content=html_content, status_code=200)
+#     return FileResponse("Portfolio_Website/index.html")
+#     # return HTMLResponse(content=html_content, status_code=200)
