@@ -43,7 +43,7 @@ def root():
     return {"hello":"Hello, Internet!!"}
 
 # templates = Jinja2Templates(directory="../Portfolio_Website")
-app.mount("/static", StaticFiles(directory="Portfolio_Website"))
+app.mount("/Portfolio_Website", StaticFiles(directory="../Portfolio_Website"), name="Portfolio_Website")
 
 @app.get("/hello")
 async def read_index():
