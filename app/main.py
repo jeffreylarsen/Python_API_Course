@@ -10,6 +10,8 @@ from fastapi.templating import Jinja2Templates
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 
+from starlette.responses import FileResponse
+
 
 # models.Base.metadata.create_all(bind=engine)
 
@@ -47,4 +49,6 @@ app.mount("/static", StaticFiles(directory="Portfolio_Website/"))
 async def read_index():
     with open("Portfolio_Website/index.html") as f:
         html_content = f.read()
-    return HTMLResponse(content=html_content, status_code=200)
+    
+    return FileResponse("Portfolio_Website/index.html")
+    # return HTMLResponse(content=html_content, status_code=200)
