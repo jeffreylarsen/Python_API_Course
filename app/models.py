@@ -35,7 +35,7 @@ class Vote(Base):
 class Show(Base):
     __tablename__ = "shows"
 
-    id = Column(Integer, primary_key=True, nullable=False)
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
     show_name = Column(String, nullable=False)
     mos_active = Column(Boolean, nullable=False)
     created_by = Column(String, nullable=False)
