@@ -41,10 +41,10 @@ def root():
     return {"hello":"Hello, Internet!!"}
 
 # templates = Jinja2Templates(directory="../Portfolio_Website")
-app.mount("/", StaticFiles(directory="../Portfolio_Website"))
+app.mount("/static", StaticFiles(directory="Portfolio_Website/"))
 
 @app.get("/hello")
 async def read_index():
-    with open("../Portfolio_Website/index.html") as f:
+    with open("Portfolio_Website/index.html") as f:
         html_content = f.read()
     return HTMLResponse(content=html_content, status_code=200)
