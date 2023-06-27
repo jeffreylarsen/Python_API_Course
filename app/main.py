@@ -3,9 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from . import models
 from .database import engine
 from .routers import auth, posts, users, votes, shows, stories, websocket, threeDeffect
+
+
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi import Request
+from fastapi.responses import HTMLResponse
 
 
 # models.Base.metadata.create_all(bind=engine)
@@ -37,9 +40,11 @@ app.include_router(threeDeffect.router)
 def root():
     return {"hello":"Hello, Internet!!"}
 
-templates = Jinja2Templates(directory="../Portfolio_Website")
+# templates = Jinja2Templates(directory="../Portfolio_Website")
 app.mount("/", StaticFiles(directory="../Portfolio_Website"))
 
-@app.get('/hello')
-def serve_home(request: Request):
-    return templates.TemplateResponse("index.html", context= {"request": request}) 
+@app.get("/hello")
+async def read_index():
+    with open("../Portfolio_Website/index.html") as f:
+        html_content = f.read()
+    return HTMLResponse(content=html_content, status_code=200)
