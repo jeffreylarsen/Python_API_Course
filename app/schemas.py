@@ -85,6 +85,7 @@ class ShowBase(BaseModel):
 class ShowModel(ShowBase):
     id: int
     created_by: str
+    created: UserRepsonse
 
     class Config:
         orm_mode = True
