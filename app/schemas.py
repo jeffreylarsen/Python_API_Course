@@ -109,8 +109,7 @@ class StoryModel(StoryBase):
     created_by: str
     last_modified_by: str
     estimated_time: str
-    # user: UserRepsonse
-    # show: ShowModel
+    show: ShowModel
 
     class Config:
         orm_mode = True
