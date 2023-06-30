@@ -84,7 +84,8 @@ class ShowBase(BaseModel):
 
 class ShowModel(ShowBase):
     id: int
-    created_by: str
+    created_by: UserRepsonse
+    # created_by: str
 
     class Config:
         orm_mode = True
@@ -113,7 +114,7 @@ class StoryModel(StoryBase):
     created_by: str
     last_modified_by: str
     estimated_time: str
-    show: ShowModel
+    show: Optional[ShowModel]
 
     class Config:
         orm_mode = True
