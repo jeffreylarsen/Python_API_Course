@@ -60,7 +60,7 @@ class Story(Base):
     created_by = Column(String, ForeignKey('users.username'), nullable=False)
     user = relationship("User")
     estimated_time= Column(String, nullable=False, server_default='00:00:00')
-    show_id = Column(Integer, ForeignKey('shows.id'), nullable=False)
+    show_id = Column(Integer, ForeignKey('shows.id', ondelete='CASCADE'), nullable=False)
     show = relationship("Show")
 
 
