@@ -109,7 +109,7 @@ class StoryModel(StoryBase):
     created_by: str
     last_modified_by: str
     estimated_time: str
-    show: List[StoryBase]
+    show: Optional[ShowModel]
 
     class Config:
         orm_mode = True
