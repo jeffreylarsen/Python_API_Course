@@ -94,7 +94,7 @@ class ShowCreate(ShowBase):
 
 class ShowResponse(ShowBase):
     id: int
-    created_by: str
+    created_by: UserRepsonse
 
 
 class StoryBase(BaseModel):
