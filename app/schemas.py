@@ -92,6 +92,10 @@ class ShowModel(ShowBase):
 class ShowCreate(ShowBase):
     pass
 
+class ShowResponse(ShowBase):
+    id: int
+    created_by: str
+
 
 class StoryBase(BaseModel):
     page_number: Optional[str]
