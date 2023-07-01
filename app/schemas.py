@@ -93,16 +93,6 @@ class ShowModel(ShowBase):
 class ShowCreate(ShowBase):
     pass
 
-class StoryBase(BaseModel):
-    page_number: Optional[str]
-    slug: Optional[str]
-    segment: Optional[str]
-    writer: Optional[str]
-    editor: Optional[str]
-    source: Optional[str]
-    script: Optional[str]
-    mos_objects: Optional[str]
-
 class ShowResponse(ShowBase):
     id: int
     created_by: UserRepsonse
@@ -119,7 +109,8 @@ class StoryModel(StoryBase):
     class Config:
         orm_mode = True
 
-
+class StoryCreate(StoryBase):
+    pass
 
 
 
