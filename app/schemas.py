@@ -100,7 +100,7 @@ class ShowResponse(ShowBase):
 
 class ShowModel(ShowBase):
     id: int
-    created_by: UserRepsonse
+    created_by: Optional[UserRepsonse]
     # created_by: str
 
     class Config:
