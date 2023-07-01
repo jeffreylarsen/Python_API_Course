@@ -84,8 +84,7 @@ class ShowBase(BaseModel):
 
 class ShowModel(ShowBase):
     id: int
-    created_by: UserRepsonse
-    # created_by: str
+    created_by: str
 
     class Config:
         orm_mode = True
@@ -98,12 +97,22 @@ class ShowResponse(ShowBase):
     created_by: UserRepsonse
 
 
+class StoryBase(BaseModel):
+    page_number: Optional[str]
+    slug: Optional[str]
+    segment: Optional[str]
+    writer: Optional[str]
+    editor: Optional[str]
+    source: Optional[str]
+    script: Optional[str]
+    mos_objects: Optional[str]
+    show_id: int
+
 class StoryModel(StoryBase):
     id: int
     created_by: str
     last_modified_by: str
     estimated_time: str
-    show_id: int
     show: ShowModel
 
     class Config:
