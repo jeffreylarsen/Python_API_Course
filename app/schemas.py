@@ -36,8 +36,6 @@ class PostVotesModel(BaseModel):
     class Config:
         orm_mode = True
 
-
-
 class UserCreate(BaseModel):
     username: str
     email: EmailStr
@@ -47,8 +45,6 @@ class UserCreate(BaseModel):
 class UserLogin(BaseModel):
     email: EmailStr
     password: str
-
-
 
 class Token(BaseModel):
     access_token: str
@@ -82,21 +78,8 @@ class ShowBase(BaseModel):
     show_air_date: datetime
     show_end_date: datetime
 
-class ShowModel(ShowBase):
-    id: int
-    created_by: UserRepsonse
-    # created_by: str
-
-    class Config:
-        orm_mode = True
-
 class ShowCreate(ShowBase):
     pass
-
-class ShowResponse(ShowBase):
-    id: int
-    created_by: UserRepsonse
-
 
 class StoryBase(BaseModel):
     page_number: Optional[str]
@@ -108,6 +91,21 @@ class StoryBase(BaseModel):
     script: Optional[str]
     mos_objects: Optional[str]
 
+class StoryCreate(StoryBase):
+    pass
+
+class ShowResponse(ShowBase):
+    id: int
+    created_by: UserRepsonse
+
+class ShowModel(ShowBase):
+    id: int
+    created_by: UserRepsonse
+    # created_by: str
+
+    class Config:
+        orm_mode = True
+
 class StoryModel(StoryBase):
     id: int
     created_by: str
@@ -118,47 +116,3 @@ class StoryModel(StoryBase):
 
     class Config:
         orm_mode = True
-
-class StoryCreate(StoryBase):
-    pass
-
-
-
-
-
-
-
-
-
-# class Story(BaseModel):
-#     id: int
-#     page_number: Optional[str]
-#     slug: Optional[str]
-#     segment: Optional[str]
-#     writer: Optional[str]
-#     editor: Optional[str]
-#     source: Optional[str]
-#     script: Optional[str]
-#     mos_objects: Optional[str]
-#     last_modified_by: Optional[str]
-#     created_by: str
-#     estimated_time: str
-#     show_id: int
-
-#     class Config:
-#         orm_mode = True
-
-
-# class StoryCreate(BaseModel):
-#     page_number: Optional[str]
-#     slug: Optional[str]
-#     segment: Optional[str]
-#     writer: Optional[str]
-#     editor: Optional[str]
-#     source: Optional[str]
-#     script: Optional[str]
-#     mos_objects: Optional[str]
-#     show_id: int
-
-#     class Config:
-#         orm_mode = True
