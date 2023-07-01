@@ -23,7 +23,7 @@ def get_all_stories(
     return stories
 
 
-@router.get('/{id}', response_model=List[schemas.StoryModel])
+@router.get('/{id}', response_model=schemas.StoryModel)
 def get_a_story(
         id: int,
         db: Session = Depends(get_db),
