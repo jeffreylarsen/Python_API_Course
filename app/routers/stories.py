@@ -17,7 +17,8 @@ def get_all_stories(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
-    stories = db.execute(text("SELECT * FROM stories")).all()
+    # stories = db.execute(text("SELECT * FROM stories")).all()
+    stories = db.query(models.Story).all()
     # print(stories)
 
     return stories

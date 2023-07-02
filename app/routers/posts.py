@@ -28,7 +28,7 @@ def get_all_posts(
         # current_user: int = Depends(Oauth2.get_current_user),
         limit: int = 50,
         offset: int = 0,
-        search: Optional[str] = ""
+        search: str = ""
     ):
 
     # posts = db \
