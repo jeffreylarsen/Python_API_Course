@@ -32,17 +32,6 @@ class Vote(Base):
     post_id= Column(Integer, ForeignKey("posts.id", ondelete="CASCADE"), primary_key=True)
     user_id= Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), primary_key=True)
 
-class Show(Base):
-    __tablename__ = "shows"
-
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
-    show_name = Column(String, nullable=False)
-    mos_active = Column(Boolean, nullable=False)
-    created_by = Column(String, nullable=False)
-    show_air_date = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('NOW(), INTERVAL 1 DAY'))
-    show_end_date = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('NOW(), INTERVAL 1 DAY, INTERVAL 1 HOUR'))
-
-
 
 class Story(Base):
     __tablename__ = "stories"
@@ -64,3 +53,12 @@ class Story(Base):
     show = relationship("Show")
 
 
+class Show(Base):
+    __tablename__ = "shows"
+
+    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
+    show_name = Column(String, nullable=False)
+    mos_active = Column(Boolean, nullable=False)
+    created_by = Column(String, nullable=False)
+    show_air_date = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('NOW(), INTERVAL 1 DAY'))
+    show_end_date = Column(TIMESTAMP(timezone=True), nullable=False, server_default=text('NOW(), INTERVAL 1 DAY, INTERVAL 1 HOUR'))
