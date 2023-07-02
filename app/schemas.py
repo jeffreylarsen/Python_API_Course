@@ -89,6 +89,12 @@ class StoryBase(BaseModel):
 class StoryCreate(StoryBase):
     pass
 
+class ShowBase(BaseModel):
+    show_name: str
+    mos_active: bool
+    show_air_date: datetime
+    show_end_date: datetime
+
 class ShowResponse(ShowBase):
     id: int
     created_by: str   
@@ -112,20 +118,10 @@ class StoryModel(StoryBase):
     class Config:
         orm_mode = True
 
-class ShowBase(BaseModel):
-    show_name: str
-    mos_active: bool
-    show_air_date: datetime
-    show_end_date: datetime
-
 class ShowCreate(ShowBase):
     pass
 
- 
 
-
-
-    
 
 
 

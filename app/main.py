@@ -1,19 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from . import models
 from .database import engine
-from .routers import auth, posts, users, votes, shows, stories, threeDeffect, portfolio
-
-
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
-from fastapi import Request
-from fastapi.responses import HTMLResponse
-
-from starlette.responses import FileResponse
-
-
-# models.Base.metadata.create_all(bind=engine)
+from .routers import auth, posts, users, votes, shows, stories, threeDeffect
 
 app = FastAPI()
 
@@ -35,21 +23,9 @@ app.include_router(users.router)
 app.include_router(votes.router)
 app.include_router(shows.router)
 app.include_router(stories.router)
-# app.include_router(websocket.router)
 app.include_router(threeDeffect.router)
-app.include_router(portfolio.router)
+# app.include_router(portfolio.router)
 
 @app.get('/')
 def root():
     return {"hello":"Hello, Internet!!"}
-
-# templates = Jinja2Templates(directory="../Portfolio_Website")
-app.mount("/Portfolio_Website", StaticFiles(directory="../Portfolio_Website"), name="Portfolio_Website")
-
-@app.get("/hello")
-def read_index():
-    # with open("Portfolio_Website/index.html") as f:
-    #     html_content = f.read()
-    
-    return FileResponse("Portfolio_Website/index.html")
-    # return HTMLResponse(content=html_content, status_code=200)
