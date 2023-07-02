@@ -106,14 +106,15 @@ class StoryBase(BaseModel):
     source: Optional[str]
     script: Optional[str]
     mos_objects: Optional[str]
-    show_id: int
+    
 
 class StoryModel(StoryBase):
     id: int
     created_by: str
     last_modified_by: str
     estimated_time: str
-    show: ShowModel
+    show_id: int
+    show: Optional[ShowModel]
 
     class Config:
         orm_mode = True
