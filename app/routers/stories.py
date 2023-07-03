@@ -50,6 +50,8 @@ def create_a_story(
         current_user: int = Depends(Oauth2.get_current_user)
     ):
 
+
+
     new_story = models.Story(
         created_by=current_user.username,
         last_modified_by=current_user.username,
@@ -73,8 +75,10 @@ def create_new_stories(
     new_stories = []
 
     for story in stories:
+        print(story)
         new_stories.append(create_a_story(story, db, current_user))
 
+    print(new_stories)
     return new_stories
 
 @router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
