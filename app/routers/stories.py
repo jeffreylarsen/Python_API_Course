@@ -63,7 +63,7 @@ def create_a_story(
 
     return new_story
 
-@router.post('/', status_code=status.HTTP_201_CREATED, response_model=List[schemas.StoryModel])
+@router.post('/m', status_code=status.HTTP_201_CREATED, response_model=List[schemas.StoryModel])
 def create_new_stories(
         stories: List[schemas.StoryCreate],
         db: Session = Depends(get_db),
