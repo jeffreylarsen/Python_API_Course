@@ -53,7 +53,6 @@ def create_a_story(
         created_by=current_user.username,
         last_modified_by=current_user.username,
         estimated_time=calculate_reading_time(story.script, 100),
-        mos_objects=generate_random_code()
         **story.dict()
     )
 

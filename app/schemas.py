@@ -90,6 +90,7 @@ class StoryCreate(StoryBase):
     show_id: int
     pass
 
+
 class ShowBase(BaseModel):
     show_name: str
     mos_active: bool
