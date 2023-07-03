@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 from .. import models, schemas, Oauth2
 from typing import List, Optional
 from ..database import get_db
-from ..utils import calculate_reading_time
+from ..utils import calculate_reading_time, generate_random_code
 
 router = APIRouter(
     prefix="/stories",
@@ -53,6 +53,7 @@ def create_a_story(
         created_by=current_user.username,
         last_modified_by=current_user.username,
         estimated_time=calculate_reading_time(story.script, 100),
+        mos_objects=generate_random_code()
         **story.dict()
     )
 
@@ -60,7 +61,6 @@ def create_a_story(
     db.commit()
     db.refresh(new_story)
 
-    print(new_story)
     return new_story
 
 @router.post('/m', status_code=status.HTTP_201_CREATED, response_model=List[schemas.StoryModel])
@@ -69,14 +69,12 @@ def create_new_stories(
         db: Session = Depends(get_db),
         current_user: int = Depends(Oauth2.get_current_user)
     ):
-    print(stories)
     new_stories = []
 
     for story in stories:
         print(story)
         new_stories.append(create_a_story(story, db, current_user))
 
-    print(new_stories)
     return new_stories
 
 @router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)

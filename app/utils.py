@@ -1,4 +1,7 @@
 from passlib.context import CryptContext
+import random
+import string
+
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -25,3 +28,26 @@ def calculate_reading_time(sentence, words_per_minute):
 
 # reading_time = calculate_reading_time(sentence, words_per_minute)
 # print("Reading Time:", reading_time)
+
+
+def generate_random_code():
+    letters = string.ascii_uppercase
+    numbers = string.digits
+    
+    code = '["'
+    code += random.choice(letters) + random.choice(letters) + random.choice(numbers)
+    code += "_"
+    code += random.choice(numbers) + random.choice(numbers)
+    code += "_"
+    code += random.choice(numbers) + random.choice(numbers)
+    code += letters[random.randint(0, 25)]
+    code += random.choice(numbers) + random.choice(numbers)
+    code += "_"
+    code += random.choice(numbers) + random.choice(numbers)
+    code += "_"
+    code += random.choice(numbers) + random.choice(numbers)
+    code += '"]'
+    
+    return code
+
+
