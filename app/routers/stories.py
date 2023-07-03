@@ -23,7 +23,7 @@ def get_all_stories(
 
     return stories
 
-
+#REWRITE FOR SQLALCHEMY CONNECTIONS
 @router.get('/{id}', response_model=schemas.StoryModel)
 def get_a_story(
         id: int,
@@ -62,6 +62,20 @@ def create_a_story(
     db.refresh(new_story)
 
     return new_story
+
+@router.post('/', status_code=status.HTTP_201_CREATED, response_model=List[schemas.StoryModel])
+def create_new_stories(
+        stories: List[schemas.StoryCreate],
+        db: Session = Depends(get_db),
+        current_user: int = Depends(Oauth2.get_current_user)
+    ):
+
+    new_stories = []
+
+    for story in stories:
+        new_stories.append(create_a_story(story, db, current_user))
+
+    return new_stories
 
 @router.delete('/{id}', status_code=status.HTTP_204_NO_CONTENT)
 def delete_a_story(
