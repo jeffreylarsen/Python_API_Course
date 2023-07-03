@@ -37,7 +37,8 @@ def get_show_by_id(
             detail=f"Show with id: {show_id} was not found."
         )
     
-    show_stories = db.execute(text(f"SELECT * FROM stories WHERE show_id = {show_id}")).all()
+    # show_stories = db.execute(text(f"SELECT * FROM stories WHERE show_id = {show_id}")).all()
+    show_stories = db.query(models.Story).filter(models.Story.show_id == show_id).all()
 
     return show_stories
 
