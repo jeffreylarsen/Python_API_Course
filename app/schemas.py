@@ -87,6 +87,7 @@ class StoryBase(BaseModel):
     mos_objects: Optional[str]
 
 class StoryCreate(StoryBase):
+    show_id: int
     pass
 
 class ShowBase(BaseModel):
