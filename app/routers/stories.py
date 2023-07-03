@@ -49,9 +49,6 @@ def create_a_story(
         db: Session = Depends(get_db),
         current_user: int = Depends(Oauth2.get_current_user)
     ):
-
-
-
     new_story = models.Story(
         created_by=current_user.username,
         last_modified_by=current_user.username,
@@ -63,6 +60,7 @@ def create_a_story(
     db.commit()
     db.refresh(new_story)
 
+    print(new_story)
     return new_story
 
 @router.post('/m', status_code=status.HTTP_201_CREATED, response_model=List[schemas.StoryModel])
@@ -71,7 +69,7 @@ def create_new_stories(
         db: Session = Depends(get_db),
         current_user: int = Depends(Oauth2.get_current_user)
     ):
-
+    print(stories)
     new_stories = []
 
     for story in stories:
