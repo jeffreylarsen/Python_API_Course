@@ -25,6 +25,6 @@ app.include_router(threeDeffect.router)
 
 @app.get('/')
 def root():
-    return threeDeffect.get()
+    threeDeffect.get()
     # return {"hello":"Hello, Internet!!"}
 
