@@ -26,6 +26,18 @@ app.include_router(stories.router)
 app.include_router(threeDeffect.router)
 # app.include_router(portfolio.router)
 
-@app.get('/')
-def root():
-    return {"hello":"Hello, Internet!!"}
+# @app.get('/')
+# def root():
+#     return {"hello":"Hello, Internet!!"}
+
+
+from fastapi import Request
+from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
+
+templates = Jinja2Templates(directory="Portfolio_Website")
+
+@app.get("/", response_class=HTMLResponse)
+def root(request: Request):
+    context = {"request": request}
+    return templates.TemplateResponse("index.html", context)
