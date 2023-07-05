@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import auth, posts, users, votes, shows, stories, threeDeffect
-from .routers.threeDeffect import get
 
 app = FastAPI()
 
@@ -26,6 +25,6 @@ app.include_router(threeDeffect.router)
 
 @app.get('/')
 def root():
-    return get()
+    return threeDeffect.get()
     # return {"hello":"Hello, Internet!!"}
 
