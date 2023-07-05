@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routers import auth, posts, users, votes, shows, stories, threeDeffect
-from .routers import portfolio
 from .routers.threeDeffect import get
 
 app = FastAPI()
