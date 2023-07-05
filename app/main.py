@@ -27,6 +27,6 @@ app.include_router(portfolio.router)
 
 @app.get('/')
 def root():
-    get()
+    return get()
     # return {"hello":"Hello, Internet!!"}
 
