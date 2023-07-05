@@ -1,13 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .database import engine
 from .routers import auth, posts, users, votes, shows, stories, threeDeffect
+from .routers import portfolio
+from .routers.threeDeffect import get
 
 app = FastAPI()
 
-origins = [
-    "https://www.google.com"
-]
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -24,20 +23,10 @@ app.include_router(votes.router)
 app.include_router(shows.router)
 app.include_router(stories.router)
 app.include_router(threeDeffect.router)
-# app.include_router(portfolio.router)
+app.include_router(portfolio.router)
 
-# @app.get('/')
-# def root():
-#     return {"hello":"Hello, Internet!!"}
+@app.get('/')
+def root():
+    get()
+    # return {"hello":"Hello, Internet!!"}
 
-
-from fastapi import Request
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
-
-templates = Jinja2Templates(directory="Portfolio_Website")
-
-@app.get("/", response_class=HTMLResponse)
-def root(request: Request):
-    context = {"request": request}
-    return templates.TemplateResponse("index.html", context)
