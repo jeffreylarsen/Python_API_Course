@@ -22,7 +22,7 @@ app.include_router(votes.router)
 app.include_router(shows.router)
 app.include_router(stories.router)
 app.include_router(threeDeffect.router)
-app.include_router(portfolio.router)
+# app.include_router(portfolio.router)
 
 @app.get('/')
 def root():
