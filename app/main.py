@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import auth, posts, users, votes, shows, stories, threeDeffect, portfolio
+from .routers import auth, posts, users, votes, shows, stories, threeDeffect
 
 app = FastAPI()
 
@@ -22,7 +22,6 @@ app.include_router(votes.router)
 app.include_router(shows.router)
 app.include_router(stories.router)
 app.include_router(threeDeffect.router)
-app.include_router(portfolio.router)
 
 # @app.get('/')
 # def root():
@@ -35,7 +34,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-app.mount("/static", StaticFiles(directory="app/Portfolio_Website/images"), name="static")
+app.mount("/images", StaticFiles(directory="app/Portfolio_Website/images"), name="static")
 
 templates = Jinja2Templates(directory="app/Portfolio_Website")
 
