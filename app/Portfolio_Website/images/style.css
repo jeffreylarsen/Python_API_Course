@@ -167,7 +167,8 @@ span {
 }
 
 .header.sticky {
-    border-bottom: .1rem solid rgba(0, 0, 0, .2);
+    /* border-bottom: .1rem solid rgba(0, 0, 0, .2); */
+    box-shadow: 0px 10px 50px rgba(0, 0, 0);
 }
 
 .about-content h2 {
@@ -375,3 +376,45 @@ span {
     font-size: 2.4rem;
     color: var(--second-bg-color);
 }
+
+/* BREAKPOINTS  */
+
+@media (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+@media (max-width: 991px) {
+    .header {
+        padding: 2rem 3%
+    }
+
+    section {
+        padding: 10rem 3% 2rem;
+    }
+
+    .footer {
+        padding: 2rem 3%;
+    }
+}
+
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block;
+    }
+
+    .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 3%;
+        background: var(--bg-color);
+        border-top: .1rem solid rgba(0, 0, 0, .2);
+        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .2);
+    }
+}
+
+
+

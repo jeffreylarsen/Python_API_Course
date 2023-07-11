@@ -29,6 +29,7 @@ app.include_router(threeDeffect.router)
 
 
 
+
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -42,4 +43,5 @@ templates = Jinja2Templates(directory="app/Portfolio_Website")
 def index(request: Request):
     context = {"request": request}
     return templates.TemplateResponse("index.html", context)
+
 

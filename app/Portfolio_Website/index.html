@@ -8,7 +8,7 @@
     <!-- box icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- custom css -->
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="images/style.css">
     <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -48,7 +48,7 @@
         </div>
 
         <div class="home-img">
-            <img src="/images/Jeff.png" alt="">
+            <img src="images/Jeff.png" alt="">
         </div>
 
     </section>
@@ -143,8 +143,10 @@
         </div>
     </footer>
 
+    
     <!-- custom js -->
-    <script src="index.js"></script>
+    <script src="images/index.js"></script>
+    <script src="{{ url_for('static', path='/index.js') }}"></script>
 </body>
 
 </html>
