@@ -37,3 +37,14 @@ def login(
     )
 
     return {"access_token": access_token, "token_type": "bearer"}
+
+
+@router.get('/auth', response_model=schemas.UserRepsonse)
+def get_authentication(
+        db: Session = Depends(get_db),
+        current_user: int = Depends(Oauth2.get_current_user)
+):
+    user = db.query(models.User).filter(models.User.id == current_user.id).first()
+    print(user)
+    if user:
+        return user
