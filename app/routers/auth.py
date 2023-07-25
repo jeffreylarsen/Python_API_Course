@@ -40,7 +40,7 @@ def login(
 
 
 @router.get('/auth', response_model=schemas.UserRepsonse)
-def get_authentication(
+def authenticated(
         db: Session = Depends(get_db),
         current_user: int = Depends(Oauth2.get_current_user)
 ):

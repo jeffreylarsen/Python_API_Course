@@ -45,3 +45,5 @@ def get_user(id: int, db: Session = Depends(get_db)):
             detail=f"User with id: {id} not found."
         )
     return user
+
+
