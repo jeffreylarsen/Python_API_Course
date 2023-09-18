@@ -133,6 +133,8 @@ def update_a_story(
     story_to_update.script = story.script
     story_to_update.estimated_time = calculate_reading_time(story.script, 100)
 
+    print(story_to_update)
+    print(story)
     db.commit()
     db.refresh(story_to_update)
 
