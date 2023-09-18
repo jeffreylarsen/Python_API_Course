@@ -129,7 +129,7 @@ def update_a_story(
         )
 
     story_to_update.last_modified_by = current_user.username
-    story_to_update.title = story.title
+    story_to_update.slug = story.slug
     story_to_update.script = story.script
     story_to_update.estimated_time = calculate_reading_time(story.script, 100)
 
