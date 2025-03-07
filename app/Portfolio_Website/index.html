@@ -9,7 +9,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- custom css -->
     <link rel="stylesheet" href="images/style.css">
-    <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet">
+    <!-- <link href="{{ url_for('static', path='/style.css') }}" rel="stylesheet"> -->
 </head>
 <body>
 
@@ -35,14 +35,14 @@
         <div class="home-content">
             <h3>Hello, I'm</h3>
             <h1>Jeffrey D. Larsen</h1>
-            <h3>And I'm a <span>Video Editor</span></h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus beatae nobis molestiae dolores id commodi ea nulla!</p>
+            <h3>And I'm a <span class="multi-text"></span></h3>
+            <p>Hi, I'm Jeffrey Dean Larsen of Larsen's Lensworks. I capture life's special moments through stunning photography and videography. Let's make your memories last forever!</p>
             <div class="social-media">
-                <a href="#"><i class='bx bxl-facebook'></i></a>
-                <a href="#"><i class='bx bxl-twitter' ></i></a>
-                <a href="#"><i class='bx bxl-youtube' ></i></a>
-                <a href="#"><i class='bx bxl-tiktok' ></i></a>
-                <a href="#"><i class='bx bxl-linkedin' ></i></a>
+                <a href="https://www.facebook.com/jdlarsen1/"><i class='bx bxl-facebook'></i></a>
+                <a href="https://twitter.com/jeff_filmmaker"><i class='bx bxl-twitter' ></i></a>
+                <a href="https://www.youtube.com/@JeffreyLarsen"><i class='bx bxl-youtube' ></i></a>
+                <a href="https://www.tiktok.com/@jeffreylarsen0"><i class='bx bxl-tiktok' ></i></a>
+                <a href="https://www.linkedin.com/in/jeffrey-larsen-75a24226a/"><i class='bx bxl-linkedin' ></i></a>
             </div>
             <a href="#" class="btn">Download CV</a>
         </div>
@@ -62,7 +62,7 @@
         <div class="about-content">
             <h2 class="heading">About <span>Me</span></h2>
             <h3>Video Editor!</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, quaerat ut. Veniam maiores quis ea quasi incidunt, illum iste quaerat necessitatibus expedita saepe optio iusto id dolor recusandae. Sit, expedita voluptatem, neque vel culpa libero architecto facilis asperiores repellat quas ab veritatis repellendus ex aut nisi.</p>
+            <p>Hi, I’m Jeffrey Dean Larsen, the creative force behind Larsen's Lensworks. With a passion for capturing life's most precious moments, I specialize in photography and videography that tell your unique story. Let's create something beautiful together!</p>
             <a href="" class="btn">Read More</a>
         </div>
     </section>
@@ -73,21 +73,21 @@
         <h2 class="heading">My <span>Services</span></h2>
         <div class="services-container">
             <div class="services-box">
-                <i class='bx bx-video-recording' ></i>
-                <h3>Video Editing</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quos modi dicta dolor iusto iure similique. Itaque atque excepturi maiores, qui sint commodi ipsa iusto illum aut, quos alias earum reiciendis quaerat. Explicabo, maiores cumque id minus adipisci incidunt possimus.</p>
-                <a href="" class="btn">Read More</a>
-            </div>
-            <div class="services-box">
                 <i class='bx bx-code-alt' ></i>
                 <h3>Coding</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quos modi dicta dolor iusto iure similique. Itaque atque excepturi maiores, qui sint commodi ipsa iusto illum aut, quos alias earum reiciendis quaerat. Explicabo, maiores cumque id minus adipisci incidunt possimus.</p>
+                <p>With a knack for coding, I create efficient and innovative solutions. Whether it's web development or custom software, I turn ideas into functional reality.</p>
                 <a href="" class="btn">Read More</a>
             </div>
             <div class="services-box">
                 <i class='bx bx-palette' ></i>
                 <h3>Painting</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate quos modi dicta dolor iusto iure similique. Itaque atque excepturi maiores, qui sint commodi ipsa iusto illum aut, quos alias earum reiciendis quaerat. Explicabo, maiores cumque id minus adipisci incidunt possimus.</p>
+                <p>Capturing moments in their purest form is my passion. Through my lens, I deliver stunning photographs that tell your unique story.</p>
+                <a href="" class="btn">Read More</a>
+            </div>
+            <div class="services-box">
+                <i class='bx bx-video-recording' ></i>
+                <h3>Video Editing</h3>
+                <p>With a decade of experience in video editing, I specialize in transforming raw footage into visually compelling stories. My portfolio includes editing for news and personal projects, ensuring each piece is polished and impactful. I bring your vision to life with precision and creativity.</p>
                 <a href="" class="btn">Read More</a>
             </div>
         </div>
@@ -95,13 +95,16 @@
 
     <!-- portfolio section -->
     <section class="portfolio" id="portfolio">
+
+        <h2 class="heading">My <span>Works</span></h2>
+        
         <div class="portfolio-container">
             <div class="portfolio-box">
                 <img src="images/directing.jpg" alt="">
                 <div class="portfolio-layer">
                     <h4>Technical Directing</h4>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia, cupiditate.</p>
-                    <a href="#"><i class='bx bx-link-external' ></i></a>
+                    <!-- <a href="#"><i class='bx bx-link-external' ></i></a> -->
                 </div>
             </div>
 
@@ -113,6 +116,16 @@
                     <a href="#"><i class='bx bx-link-external' ></i></a>
                 </div>
             </div>
+
+            <div class="portfolio-box">
+                <img src="images/jeff.jpg" alt="">
+                <div class="portfolio-layer">
+                    <h4>Technical Directing</h4>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia, cupiditate.</p>
+                    <a href="#"><i class='bx bx-link-external' ></i></a>
+                </div>
+            </div>
+
         </div>
     </section>
     
@@ -136,7 +149,7 @@
     <!-- footer -->
     <footer class="footer">
         <div class="footer-text">
-            <p>Copyright &copy; 2023 by Jeffrey Larsen | All Rights Reserved</p>
+            <p>Copyright &copy; 2025 by Jeffrey Larsen | All Rights Reserved</p>
         </div>
         <div class="footer-iconTop">
             <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
@@ -144,9 +157,15 @@
     </footer>
 
     
+    <!-- scroll reveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- typedjs -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
     <!-- custom js -->
     <script src="images/index.js"></script>
-    <script src="{{ url_for('static', path='/index.js') }}"></script>
+    <!-- <script src="{{ url_for('static', path='/index.js') }}"></script> -->
 </body>
 
 </html>
