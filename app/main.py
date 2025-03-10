@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import auth, posts, users, votes, shows, stories, threeDeffect
+from .routers import auth, posts, users, votes, shows, stories, threeDeffect, websocket
 
 app = FastAPI()
 
@@ -22,6 +22,7 @@ app.include_router(votes.router)
 app.include_router(shows.router)
 app.include_router(stories.router)
 app.include_router(threeDeffect.router)
+app.include_router(websocket.router)
 
 # @app.get('/')
 # def root():
