@@ -28,9 +28,6 @@ app.include_router(websocket.router)
 # def root():
 #     return {"hello":"Hello, Internet!!"}
 
-
-
-
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
